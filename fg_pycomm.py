@@ -13,11 +13,7 @@
 #    along with fg-pycomm.  If not, see <http://www.gnu.org/licenses/>.
 
 def parse_settings():
-    from optparse import OptionParser
-    parser = OptionParser()
-    parser.add_option("-s", "--settings", dest="settings_path",
-                  help="set settings file")
-    (options, args) = parser.parse_args()
+
     return
 
 def parse_input_xml( ):
@@ -27,12 +23,31 @@ def parse_input_xml( ):
     print (xmldoc.toxml())
     return
 
-print('hello')
-
 if __name__ == '__main__':
     pass
 
-parse_settings();
+import json, sys
+from optparse import OptionParser
+parser = OptionParser()
+parser.add_option("-s", "--settings", dest="settings_path", help="set path to settings files folder")
+(options, args) = parser.parse_args()
+print (options)
+print (args)
+try:
+    print (options.settings_path)
+except:
+    print('No settings path given. Exiting')
+    sys.exit(0)
+
+import os.path
+if not os.path.isdir(options.settings_path):
+    print('Specified settings folder doesn\'t exist. Exiting')
+    sys.exit(0)
+settings_file_path = options.settings_path + 'settings.json'
+from pprint import pprint
+with open(settings_file_path) as settings_file:    
+    data = json.load(settings_file)
+pprint(data)
 
 import socket
 UDP_IP = "127.0.0.1"
