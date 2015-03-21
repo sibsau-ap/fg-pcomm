@@ -16,13 +16,6 @@ def parse_settings():
 
     return
 
-def parse_input_xml( ):
-    "this function parses xml with data settings"
-    from xml.dom import minidom
-    xmldoc = minidom.parse('../fg2comm.xml')
-    print (xmldoc.toxml())
-    return
-
 if __name__ == '__main__':
     pass
 
@@ -49,17 +42,30 @@ with open(settings_file_path) as settings_file:
     data = json.load(settings_file)
 pprint(data)
 
+#"export" means from flightgear to our application
+fg_export_cfg_path = options.settings_path + data['config_files']['fg_export_cfg']
+from xml.dom import minidom
+doc = minidom.parse(fg_export_cfg_path)
+# doc.getElementsByTagName returns NodeList
+#value_field = doc.getElementsByTagName("chunk")
+#for chunk in value_field:
+#    print(chunk.getElementsByTagName(''))
+
 import socket
 UDP_IP = "127.0.0.1"
 UDP_PORT = 12345
-parse_input_xml();
 sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
 sock.bind((UDP_IP, UDP_PORT))
 
 
-
+q = {}
 while True:
-    data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
+    packet, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
+    data = packet.split('\t')
+    for elem in data:
+        name, val = elem.split('=')
+        q[name]=float(val)
     print ("received message:"), data
+    print ("q:"), q
     

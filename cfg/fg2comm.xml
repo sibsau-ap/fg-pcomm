@@ -11,7 +11,7 @@
 				<node>/position/altitude-ft</node>
 				<name>altitude</name>
 				<type>float</type>
-				<format>%03.2f</format>
+				<format>alt=%03.2f</format>
 			</chunk>
 			
 			
@@ -19,21 +19,21 @@
 				<node>/position/ground-elev-m</node>
 				<name>ground-elev</name>
 				<type>float</type>
-				<format>%03.2f</format>
+				<format>ground-elev=%03.2f</format>
 			</chunk>
 			
 			<chunk>
 				<node>/position/latitude-deg</node>
 				<name>latitude</name>
 				<type>float</type>
-				<format>%.10f</format>
+				<format>lat=%.10f</format>
 			</chunk>
 			 
 			<chunk>
 				<node>/position/longitude-deg</node>
 				<name>longitude</name>
 				<type>float</type>
-				<format>%.10f</format>
+				<format>lon=%.10f</format>
 			</chunk>
  
  			<!--angles-->
@@ -41,21 +41,21 @@
 				<node>/orientation/roll-deg</node>
 				<name>roll</name>
 				<type>float</type>
-				<format>%03.3f</format>
+				<format>roll=%03.3f</format>
 			</chunk>
 			
 			<chunk>
 				<node>/orientation/pitch-deg</node>
 				<name>pitch</name>
 				<type>float</type>
-				<format>%03.3f</format>
+				<format>pitch=%03.3f</format>
 			</chunk>
 			
 			<chunk>
 				<node>/orientation/heading-deg</node>
 				<name>heading</name>
 				<type>float</type>
-				<format>%03.3f</format>
+				<format>yaw=%03.3f</format>
 			</chunk>
 			
 			<!--rates-->
@@ -63,21 +63,21 @@
 				<node>/orientation/roll-rate-degps</node>
 				<name>roll_rate</name>
 				<type>float</type>
-				<format>%03.3f</format>
+				<format>rate-roll=%03.3f</format>
 			</chunk>
 			
 			<chunk>
 				<node>/orientation/pitch-rate-degps</node>
 				<name>pitch_rate</name>
 				<type>float</type>
-				<format>%03.3f</format>
+				<format>rate-pitch=%03.3f</format>
 			</chunk>
 			
 			<chunk>
 				<node>/orientation/yaw-rate-degps</node>
 				<name>yaw_rate</name>
 				<type>float</type>
-				<format>%03.3f</format>
+				<format>rate-yaw=%03.3f</format>
 			</chunk>
 		</output>
 	</generic>
